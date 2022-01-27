@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+      integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+      crossorigin="anonymous"
+    />
+
+    <title>Hello, world!</title>
+    <script src="./marked.js"></script>
+    <script>
+      function setDefault() {
+        let defaultText = `\
+# Welcome to my React Markdown Previewer!
+
+## This is a sub-heading...
+### And here's some other cool stuff:
+
+Heres some code, \`<div></div>\`, between 2 backticks.
+
+\`\`\`
+// this is multi-line code:
+
+function anotherExample(firstLine, lastLine) {
+  if (firstLine == '\`\`\`' && lastLine == '\`\`\`') {
+    return multiLineCode;
+  }
+}
+\`\`\`
+
+You can also make text **bold**... whoa!
+Or _italic_.
+Or... wait for it... **_both!_**
+And feel free to go crazy ~~crossing stuff out~~.
+
+There's also [links](https://www.freecodecamp.org), and
+> Block Quotes!
+
+And if you want to get really crazy, even tables:
+
+Wild Header | Crazy Header | Another Header?
+------------ | ------------- | -------------
+Your content can | be here, and it | can be here....
+And here. | Okay. | I think we get it.
+
+- And of course there are lists.
+  - Some are bulleted.
+     - With different indentation levels.
+        - That look like this.
+
+
+1. And there are numbered lists too.
+1. Use just 1s if you want!
+1. And last but not least, let's not forget embedded images:
+
+![freeCodeCamp Logo](https://images.pexels.com/photos/36029/aroni-arsa-children-little.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500)
+
+        `;
+        let editorFeild = document.getElementById("editor");
+        editorFeild.value = defaultText;
+      }
+
+      function updatePreview() {
+        let previewElement = document.getElementById("preview");
+        let editorValue = document.getElementById("editor").value;
+        let markedUpHtml = marked.parse(editorValue);
+        previewElement.innerHTML = markedUpHtml;
+      }
+    </script>
+  </head>
+  <body onload="setDefault()">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col text-center bg-dark text-white">
+          <h1>MarkDown Previewer</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 bg-danger">
+          <h2 class="text-center text-white">Editor:</h2>
+          <div class="form-group">
+            <textarea
+              class="form-control my-5"
+              id="editor"
+              rows="20"
+              onkeyup="{updatePreview()}"
+            ></textarea>
+          </div>
+        </div>
+        <div class="col-md-6 bg-success">
+          <h2 class="text-center text-white">Previewer:</h2>
+          <div id="preview"></div>
+        </div>
+      </div>
+    </div>
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+      integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+  </body>
+</html>
